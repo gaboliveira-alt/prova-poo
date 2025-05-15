@@ -27,7 +27,7 @@ export abstract class StarShip {
 
 
     public loadCargo(cargoWeight: Cargo): boolean {
-       if (this.canCarry(cargoWeight) == true) {
+       if (this.canCarry(cargoWeight)) {
         this.currentCargoload += cargoWeight.weight
         return true
        }
