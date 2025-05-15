@@ -1,5 +1,4 @@
 import { Cargo } from "./cargo"
-import { Planet } from "./planet"
 
 export abstract class StarShip {
     
