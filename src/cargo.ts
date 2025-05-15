@@ -8,9 +8,9 @@ export class Cargo {
     public readonly requirements: Requirements[]
 
     
-    constructor(type: CargoType, weight: number) {
+    constructor(type: CargoType, weight: number, requirements: Requirements[]) {
         this.type = type
         this.weight = weight
-        this.requirements = []
+        this.requirements = requirements
     }
 }
