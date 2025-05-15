@@ -36,8 +36,8 @@ class StarDestroyer extends StarShip {
         return false
     }
 
-    public calculateFuelConsumption(planet_distance: number): number {
-        return planet_distance * this.speed * (this.currentCargoload / this.maxCargoload)
+    public calculateFuelConsumption(planetDistance: number): number {
+        return planetDistance * this.speed * (this.currentCargoload / this.maxCargoload)
     }
 }
 
@@ -76,8 +76,8 @@ class TieExplorer extends StarShip {
     }
 
 
-    public calculateFuelConsumption(planet_distance: number): number {
-        return planet_distance * this.speed
+    public calculateFuelConsumption(planetDistance: number): number {
+        return planetDistance * this.speed
     }
 }
 
@@ -115,7 +115,7 @@ class GR75MediumTransport extends StarShip {
     }
 
 
-    public calculateFuelConsumption(planet_distance: number): number {
-        return planet_distance * this.speed * (1 + this.currentCargoload / this.maxCargoload)
+    public calculateFuelConsumption(planetDistance: number): number {
+        return planetDistance * this.speed * (1 + this.currentCargoload / this.maxCargoload)
     }
 }

@@ -23,7 +23,7 @@ export abstract class StarShip {
 
     abstract canCarry(cargo: Cargo): boolean 
 
-    abstract calculateFuelConsumption(planet_distance: number): number 
+    abstract calculateFuelConsumption(planetDistance: number): number 
 
 
     public loadCargo(cargoWeight: Cargo): boolean {
