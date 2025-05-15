@@ -35,8 +35,5 @@ export abstract class StarShip {
     }
 
 
-    public unloadCargo(): void {
-        this.currentCargoload = 0
-        console.log(`Carga entregue no ${Planet.name}`)
-    }
+    public unloadCargo(): void {}
 }
