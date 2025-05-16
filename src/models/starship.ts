@@ -1,8 +1,7 @@
 import { Cargo } from "./cargo"
-import { PlanetType } from "./utitls"
+import { PlanetType } from "../utils/utils"
 
-export abstract class StarShip {
-    
+export abstract class StarShip { 
     public readonly name: string
     protected speed: number
     protected maxCargo: number

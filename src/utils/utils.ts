@@ -1,10 +1,8 @@
-
 export enum CargoType {
     INDUSTRIAL_EQUIPMENT,
     BIOTECH,
     DROID_PARTS
 }
-
 
 export enum Requirements {
     SHOCK_PROOF,
@@ -12,13 +10,11 @@ export enum Requirements {
     ANTI_CORROSIVE
 }
 
-
 export enum Restrictions {
     ACID_RESISTANT,
     HUMIDITY_SENSITIV,
     NO_LIQUIDS
 }
-
 
 export enum PlanetType {
     AQUATIC,

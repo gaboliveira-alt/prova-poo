@@ -1,6 +1,6 @@
 import { Cargo } from "./cargo";
 import { StarShip } from "./starship";
-import { CargoType, PlanetType } from "./utitls";
+import { CargoType, PlanetType } from "../utils/utils";
 
 
 class StarDestroyer extends StarShip {
@@ -126,3 +126,5 @@ class GR75MediumTransport extends StarShip {
         return planetDistance * this.speed * (1 + this.currentCargo / this.maxCargo)
     }
 }
+
+export { StarDestroyer, GR75MediumTransport, TieExplorer }

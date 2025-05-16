@@ -1,4 +1,4 @@
-import { CargoType, Requirements } from "./utitls"
+import { CargoType, Requirements } from "../utils/utils"
 
 
 export class Cargo {
