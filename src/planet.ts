@@ -17,6 +17,12 @@ export abstract class Planet {
     }
 
     public acceptsCargp(cargoShip: Cargo): boolean {
+        for (const restriction of this.restrictions) {
+            if (restriction in cargoShip.requirements) {
+                return true
+            }
+        }
+
         return false
     }
 }
