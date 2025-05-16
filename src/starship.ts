@@ -35,6 +35,7 @@ export abstract class StarShip {
 
     abstract calculateFuelConsumption(planetDistance: number): number
 
+    
     public travelToDestiny(planetDistance: number): boolean {
         const fuelLoss = this.calculateFuelConsumption(planetDistance)
 
