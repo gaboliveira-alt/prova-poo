@@ -1,22 +1,27 @@
 
 export enum CargoType {
-    HEAVY_MATERIAL,
-    MEDIUM_MATERIAL,
-    LIGHT_MATERIAL
+    INDUSTRIAL_EQUIPMENT,
+    BIOTECH,
+    DROID_PARTS
 }
 
 
 export enum Requirements {
-    TEMPERATURE_CONTROL,
+    SHOCK_PROOF,
     PRESSURE_SEALED,
     ANTI_CORROSIVE
 }
 
 
 export enum Restrictions {
-    EXTREME_COLD,
     ACID_RESISTANT,
-    NO_HEAVY_MATERIAL,
-    SECURE_PACKAGING,
+    HUMIDITY_SENSITIV,
     NO_LIQUIDS
+}
+
+
+export enum PlanetType {
+    AQUATIC,
+    ROCKY,
+    CORROSIVE,
 }

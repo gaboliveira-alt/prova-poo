@@ -1,6 +1,6 @@
 import { Cargo } from "./cargo";
 import { StarShip } from "./starship";
-import { CargoType } from "./utitls";
+import { CargoType, PlanetType } from "./utitls";
 
 
 class StarDestroyer extends StarShip {
@@ -10,6 +10,7 @@ class StarDestroyer extends StarShip {
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 1.2
     private static currentLoad: number = 0
+    private static compatiblePlanet: PlanetType[] = [PlanetType.CORROSIVE]
 
     
     constructor(name: string) {
@@ -19,15 +20,16 @@ class StarDestroyer extends StarShip {
             StarDestroyer.maxLoad, 
             StarDestroyer.fuelLevel, 
             StarDestroyer.fuelEfficieny, 
-            StarDestroyer.currentLoad
+            StarDestroyer.currentLoad,
+            StarDestroyer.compatiblePlanet
         )
     }
 
 
     public canCarry(cargo: Cargo): boolean {
-        const destroyerMaxCargo = this.maxCargoload
+        const destroyerMaxCargo = this.maxCargo
 
-        if (cargo.type == CargoType.HEAVY_MATERIAL) {
+        if (cargo.type == CargoType.INDUSTRIAL_EQUIPMENT) {
             if (cargo.weight <= destroyerMaxCargo) {
                 return true
             }
@@ -36,8 +38,9 @@ class StarDestroyer extends StarShip {
         return false
     }
 
+
     public calculateFuelConsumption(planetDistance: number): number {
-        return planetDistance * this.speed * (this.currentCargoload / this.maxCargoload)
+        return planetDistance * this.speed * (this.currentCargo / this.maxCargo)
     }
 }
 
@@ -49,6 +52,7 @@ class TieExplorer extends StarShip {
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 0.4
     private static currentLoad: number = 0
+    private static compatiblePlanet: PlanetType[] = [PlanetType.AQUATIC]
 
 
     constructor(name: string) {
@@ -58,15 +62,16 @@ class TieExplorer extends StarShip {
             TieExplorer.maxLoad,
             TieExplorer.fuelLevel,
             TieExplorer.fuelEfficieny,
-            TieExplorer.currentLoad
+            TieExplorer.currentLoad,
+            TieExplorer.compatiblePlanet
         )
     }
 
 
     public canCarry(cargo: Cargo): boolean {
-        const tieExplorermaxCargo = this.maxCargoload
+        const tieExplorermaxCargo = this.maxCargo
 
-        if (cargo.type == CargoType.LIGHT_MATERIAL) {
+        if (cargo.type == CargoType.BIOTECH) {
             if (cargo.weight <= tieExplorermaxCargo) {
                 return true
             }
@@ -89,6 +94,7 @@ class GR75MediumTransport extends StarShip {
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 0.7
     private static currentLoad: number = 0
+    private static compatiblePlanet: PlanetType[] = [PlanetType.ROCKY]
 
     constructor(name: string) {
         super(
@@ -97,15 +103,16 @@ class GR75MediumTransport extends StarShip {
             GR75MediumTransport.maxLoad,
             GR75MediumTransport.fuelLevel,
             GR75MediumTransport.fuelEfficieny,
-            GR75MediumTransport.currentLoad
+            GR75MediumTransport.currentLoad,
+            GR75MediumTransport.compatiblePlanet
         )
     }
 
 
     public canCarry(cargo: Cargo): boolean {
-        const gr75Maxcargo = this.maxCargoload
+        const gr75Maxcargo = this.maxCargo
 
-        if (cargo.type == CargoType.MEDIUM_MATERIAL) {
+        if (cargo.type == CargoType.DROID_PARTS) {
             if (cargo.weight <= gr75Maxcargo) {
                 return true
             }
@@ -116,6 +123,6 @@ class GR75MediumTransport extends StarShip {
 
 
     public calculateFuelConsumption(planetDistance: number): number {
-        return planetDistance * this.speed * (1 + this.currentCargoload / this.maxCargoload)
+        return planetDistance * this.speed * (1 + this.currentCargo / this.maxCargo)
     }
 }
