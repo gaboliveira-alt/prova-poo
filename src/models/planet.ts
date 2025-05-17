@@ -1,5 +1,5 @@
 import { Cargo } from "./cargo"
-import { PlanetType, Requirements, Restrictions } from "../utils/types"
+import { PlanetType, Restrictions } from "../utils/types"
 import { checkCargoCompatible } from "../utils/isCompatible"
 
 export abstract class Planet {

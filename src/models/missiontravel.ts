@@ -14,24 +14,34 @@ export class MissionTravel {
         this.starShip = starship
         this.cargoShip = cargpShip
         this.destinyPlanet = destinyPlanet
-        this.missionStatus = ['PENDING']
+        this.missionStatus = []
     }
 
 
     public startMission(): void {
-        if (true) {
-        this.starShip.canCarry(this.cargoShip)
-        this.starShip.compatiblePlanets.includes(this.destinyPlanet.type)
-        this.destinyPlanet.acceptsCargo(this.cargoShip)
-        
+        if (!this.starShip.canCarry(this.cargoShip)) {
+            this.missionStatus.push('FAILED')
+            return
+        }
+
+        if (!this.starShip.compatiblePlanets.includes(this.destinyPlanet.type)) {
+            this.missionStatus.push('FAILED')
+            return
+        }
+
+        if (!this.destinyPlanet.acceptsCargo(this.cargoShip)) {
+            this.missionStatus.push('FAILED')
+            return
+        }
+
         this.fuelNeeded = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
         if (this.starShip.fuelLevel < this.fuelNeeded) {
             this.missionStatus.push('FAILED')
             return
         }
 
+
         this.missionStatus.push('SUCESS')
-    }
     }
 
 
@@ -46,7 +56,28 @@ export class MissionTravel {
 
 
     public generateReport(): string {
-        const lastmissionStatus = this.missionStatus[this.missionStatus.length - 1]
-        return ''
+        const lastmissionStatus: string = this.missionStatus[this.missionStatus.length - 1]
+        
+        const headMessage: string = `\n RELATORIO DA MISSÃO \n`
+        let bodyMessage: string = headMessage + `- Nave: ${this.starShip.name}\n` + 
+                                    `- Carga: ${this.cargoShip.type}\n` + 
+                                    `- Planeta: ${this.destinyPlanet.name} ${this.destinyPlanet.type}\n` + 
+                                    `- Combustivel usado: ${this.fuelNeeded.toFixed(1)}`
+        
+        
+        switch(lastmissionStatus) {
+            case 'DONE':
+                bodyMessage += `\n MISSÃO BEM SUCEDIDA \n` + 
+                `Carga entregue! Combustivel restante: ${this.fuelNeeded.toFixed(1)}`
+                break
+            case 'SUCESS':
+                bodyMessage += `MISSÃO PRONTA, MAS NÃO EXECUTADA`
+            case 'FAILED':
+                bodyMessage += `\n MISSÃO COMPROMETIDA \n` + `Status: ${lastmissionStatus}`
+            default:
+                return `Status da Missão desconhecido\n`
+        }
+
+        return bodyMessage
     }
 }

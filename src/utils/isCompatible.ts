@@ -1,7 +1,7 @@
 import { Restrictions, Requirements } from "./types";
 
 
-export function getRequirementsforRestrictions(restriction: Restrictions): Requirements {
+function getRequirementsforRestrictions(restriction: Restrictions): Requirements {
     switch (restriction) {
         case 'ACID_RESISTANT':
             return 'ANTI_CORROSIVE'

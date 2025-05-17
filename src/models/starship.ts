@@ -70,6 +70,5 @@ export abstract class StarShip {
         }
 
         this.currentCargo = 0
-        console.log("Carga descarregada com sucesso")
     }
 }
