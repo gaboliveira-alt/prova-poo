@@ -1,6 +1,6 @@
 import { Cargo } from "./cargo"
-import { PlanetType, Restrictions } from "../utils/utils"
-import { isCompatible } from "../utils/isCompatible"
+import { PlanetType, Requirements, Restrictions } from "../utils/utils"
+import { checkCargoCompatible } from "../utils/isCompatible"
 import { Convert } from "../utils/convertToName"
 
 export abstract class Planet {
@@ -18,37 +18,8 @@ export abstract class Planet {
     }
 
     public acceptsCargo(cargoShip: Cargo): boolean {
-        for (const restriction of this.restrictions) {
-            if (!isCompatible(restriction, cargoShip.requirements)) {
-                return false;
-            }
-        }
-        return true;
+        return checkCargoCompatible(this.restrictions, cargoShip.requirements)
     }
 
-    public showPlanet() {
-        let planetType: string;
-
-        switch (this.type) {
-            case 0:
-                planetType = 'CorrosivePlanet';
-                break;
-            case 1:
-                planetType = 'RockyPlanet'
-                break;
-            case 2:
-                planetType = 'AquaticPlanet';
-                break;
-        }
-        
-        const restrictions: string[] = []
-        for (let i of this.restrictions) {
-            const restriction = Convert(i);
-            restrictions.push(restriction);
-        }
-        console.log('Planet name:', this.name);
-        console.log('Planet type:', planetType!);
-        console.log('Planet distance from Earth:', this.distancefromEarth);
-        console.log('Planet restrictions:', restrictions);
-    }
+    public showPlanet() {}
 }
