@@ -1,6 +1,6 @@
 import { Cargo } from "./cargo";
 import { StarShip } from "./starship";
-import { CargoType, PlanetType } from "../utils/utils";
+import { PlanetType } from "../utils/types";
 
 
 class StarDestroyer extends StarShip {
@@ -10,7 +10,7 @@ class StarDestroyer extends StarShip {
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 1.2
     private static currentLoad: number = 0
-    private static compatiblePlanet: PlanetType[] = [PlanetType.CORROSIVE]
+    private static compatiblePlanet: PlanetType[] = ['CORROSIVE']
 
     
     constructor(name: string) {
@@ -29,7 +29,7 @@ class StarDestroyer extends StarShip {
     public canCarry(cargo: Cargo): boolean {
         const destroyerMaxCargo = this.maxCargo
 
-        if (cargo.type == CargoType.INDUSTRIAL_EQUIPMENT) {
+        if (cargo.type === 'INDUSTRIAL_EQUIPMENT') {
             if (cargo.weight <= destroyerMaxCargo) {
                 return true
             }
@@ -52,7 +52,7 @@ class TieExplorer extends StarShip {
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 0.4
     private static currentLoad: number = 0
-    private static compatiblePlanet: PlanetType[] = [PlanetType.AQUATIC]
+    private static compatiblePlanet: PlanetType[] = ['AQUATIC']
 
 
     constructor(name: string) {
@@ -71,7 +71,7 @@ class TieExplorer extends StarShip {
     public canCarry(cargo: Cargo): boolean {
         const tieExplorermaxCargo = this.maxCargo
 
-        if (cargo.type == CargoType.BIOTECH) {
+        if (cargo.type === 'BIOTECH') {
             if (cargo.weight <= tieExplorermaxCargo) {
                 return true
             }
@@ -94,7 +94,7 @@ class GR75MediumTransport extends StarShip {
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 0.7
     private static currentLoad: number = 0
-    private static compatiblePlanet: PlanetType[] = [PlanetType.ROCKY]
+    private static compatiblePlanet: PlanetType[] = ['ROCKY']
 
     constructor(name: string) {
         super(
@@ -112,7 +112,7 @@ class GR75MediumTransport extends StarShip {
     public canCarry(cargo: Cargo): boolean {
         const gr75Maxcargo = this.maxCargo
 
-        if (cargo.type == CargoType.DROID_PARTS) {
+        if (cargo.type === 'DROID_PARTS') {
             if (cargo.weight <= gr75Maxcargo) {
                 return true
             }

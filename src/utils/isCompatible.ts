@@ -1,4 +1,4 @@
-import { Restrictions, Requirements } from "./utils";
+import { Restrictions, Requirements } from "./types";
 
 
 export function getRequirementsforRestrictions(restriction: Restrictions): Requirements {

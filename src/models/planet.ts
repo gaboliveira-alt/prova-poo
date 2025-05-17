@@ -1,9 +1,9 @@
 import { Cargo } from "./cargo"
-import { PlanetType, Requirements, Restrictions } from "../utils/utils"
+import { PlanetType, Requirements, Restrictions } from "../utils/types"
 import { checkCargoCompatible } from "../utils/isCompatible"
-import { Convert } from "../utils/convertToName"
 
 export abstract class Planet {
+    
     public readonly name: string
     public readonly type: PlanetType
     protected distancefromEarth: number
@@ -17,9 +17,13 @@ export abstract class Planet {
         this.restrictions = restrictions
     }
 
+    
     public acceptsCargo(cargoShip: Cargo): boolean {
         return checkCargoCompatible(this.restrictions, cargoShip.requirements)
     }
 
-    public showPlanet() {}
+    
+    public showPlanet(): string {
+        return `${this.name} | ${this.type} | ${this.restrictions}`
+    }
 }

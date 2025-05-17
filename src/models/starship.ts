@@ -1,5 +1,5 @@
 import { Cargo } from "./cargo"
-import { PlanetType } from "../utils/utils"
+import { PlanetType } from "../utils/types"
 
 export abstract class StarShip { 
     public readonly name: string

@@ -1,6 +1,6 @@
 import { CreatePlanet } from "./services/createPlanet";
 import { CreateStarShip } from "./services/createStarShip";
-import { Restrictions } from "./utils/utils";
+import { Restrictions } from "./utils/types";
 
 const apollo11 = CreateStarShip.createStarDestroyer('Apollo 11');
 const Prometheus = CreateStarShip.createGR75MediumTransport('Prometheus');
