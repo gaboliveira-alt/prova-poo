@@ -19,9 +19,9 @@ function choiceRestriction(id: number): Restrictions {
 
 export class CreatePlanet {
     static createCorrosivePlanet(name: string) {
-        const distance: number = randomInt(100, 10000);
-        const qtyRestrictions: number = randomInt(0, 2);
-        const restrictions: Restrictions[] = [];
+        const distance: number = randomInt(100, 10000)
+        const qtyRestrictions: number = randomInt(0, 2)
+        const restrictions: Restrictions[] = []
 
         for (let i = 0; i < qtyRestrictions; i++) {
             const temp: number = randomChoice(['ACID_RESISTANT', 'HUMIDITY_SENSITIV', 'NO_LIQUIDS'])
@@ -31,9 +31,9 @@ export class CreatePlanet {
             }
         }
 
-        const corrosivePlanet = new CorrosivePlanet(name, distance, restrictions);
-        return corrosivePlanet;
-    };
+        const corrosivePlanet = new CorrosivePlanet(name, distance, restrictions)
+        return corrosivePlanet
+    }
 
 
     static createRockyPlanet(name: string) {
@@ -51,7 +51,7 @@ export class CreatePlanet {
 
         const rockyPlanet = new RockyPlanet(name, distance, restrictions);
         return rockyPlanet
-    };
+    }
 
     
     static createAquaticPlanet(name: string) {
@@ -69,5 +69,5 @@ export class CreatePlanet {
 
         const aquaticPlanet = new AquaticPlanet(name, distance, restrictions);
         return aquaticPlanet;
-    };
+    }
 }
