@@ -13,6 +13,10 @@ export type ShipsName = {
     GR75: string[]
 }
 
+
+export type ShipTypes = keyof ShipsName
+
+
 export const starShipsNames: ShipsName = {
     StarDestroyer: ['Executor', 'Devastator', 'Malgus'],
     TieExplorer: ['Phantom','Shadow Probe', 'Deep Scanner'],
