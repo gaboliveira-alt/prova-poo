@@ -2,7 +2,7 @@ import { Cargo } from "./cargo";
 import { Planet } from "./planet";
 import { StarShip } from "./starship";
 
-export class MissionTravel {
+export class StarTrip {
 
     public readonly starShip: StarShip
     public readonly cargoShip: Cargo

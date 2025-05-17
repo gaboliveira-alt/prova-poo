@@ -1,7 +1,7 @@
 {
   "name": "prova-poo",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "del /s /q build && tsc"

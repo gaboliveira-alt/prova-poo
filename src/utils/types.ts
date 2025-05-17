@@ -1,11 +1,29 @@
 
 export type CargoType = 'INDUSTRIAL_EQUIPMENT' | 'BIOTECH' | 'DROID_PARTS' 
 
+
+export const CargoOptions = {
+  INDUSTRIAL_EQUIPMENT: {
+    requirements: ["SHOCK_PROOF"],
+    weight: 1500
+  },
+  BIOTECH: {
+    requirements: ["PRESSURE_SEALED", "ANTI_CORROSIVE"],
+    weight: 200
+  },
+  DROID_PARTS: {
+    requirements: [],
+    weight: 800
+  }
+} as const
+
+
 export type PlanetType = keyof PlanetsName
 
 export type Requirements = 'SHOCK_PROOF' | 'PRESSURE_SEALED' | 'ANTI_CORROSIVE'
 
 export type Restrictions =  'ACID_RESISTANT' | 'HUMIDITY_SENSITIV' | 'NO_LIQUIDS'
+
 
 export type ShipsName = {
     StarDestroyer: string[],
