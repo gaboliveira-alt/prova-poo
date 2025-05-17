@@ -9,7 +9,6 @@ export abstract class StarShip {
     protected fuelEfficiency: number
     protected currentCargo: number
     protected compatiblePlanets: PlanetType[]
-
     
     constructor(
         name: string, 
@@ -29,12 +28,10 @@ export abstract class StarShip {
         this.compatiblePlanets = compatiblePlanets
     }
 
-
     abstract canCarry(cargo: Cargo): boolean 
 
     abstract calculateFuelConsumption(planetDistance: number): number
 
-    
     public travelToDestiny(planetDistance: number): boolean {
         const fuelLoss = this.calculateFuelConsumption(planetDistance)
 
@@ -47,11 +44,9 @@ export abstract class StarShip {
         }
     }
 
-
     public refuel(fuelAmmount: number): void {
         this.fuelLevel = Math.min(this.fuelLevel + fuelAmmount, 100)
     }
-
 
     public loadCargo(cargoWeight: Cargo): boolean {
        if (this.canCarry(cargoWeight)) {
@@ -61,7 +56,6 @@ export abstract class StarShip {
 
        return false
     }
-
 
     public unloadCargo(): void {}
 }
