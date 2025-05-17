@@ -16,6 +16,7 @@ class StarDestroyer extends StarShip {
     constructor(name: string) {
         super(
             name, 
+            'StarDestroyer',
             StarDestroyer.speed, 
             StarDestroyer.maxLoad, 
             StarDestroyer.fuelLevel, 
@@ -44,7 +45,6 @@ class StarDestroyer extends StarShip {
     }
 }
 
-
 class TieExplorer extends StarShip {
 
     private static speed: number = 1.5
@@ -58,6 +58,7 @@ class TieExplorer extends StarShip {
     constructor(name: string) {
         super(
             name,
+            'TieExplorer',
             TieExplorer.speed,
             TieExplorer.maxLoad,
             TieExplorer.fuelLevel,
@@ -99,6 +100,7 @@ class GR75MediumTransport extends StarShip {
     constructor(name: string) {
         super(
             name,
+            'GR75MediumTransport',
             GR75MediumTransport.speed,
             GR75MediumTransport.maxLoad,
             GR75MediumTransport.fuelLevel,

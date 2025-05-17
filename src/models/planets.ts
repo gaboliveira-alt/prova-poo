@@ -2,6 +2,8 @@ import { Planet } from "./planet";
 import { PlanetType } from "../utils/utils";
 import { Restrictions } from "../utils/utils";
 
+export const planets: Planet[] = [];
+
 class CorrosivePlanet extends Planet {
     constructor(name: string, distance: number, restrictions: Restrictions[]) {
         super(name, PlanetType.CORROSIVE, distance, restrictions)
