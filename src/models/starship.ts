@@ -5,10 +5,10 @@ export abstract class StarShip {
     public readonly name: string
     protected speed: number
     protected maxCargo: number
-    protected fuelLevel: number
+    public fuelLevel: number
     protected fuelEfficiency: number
     protected currentCargo: number
-    protected compatiblePlanets: PlanetType[]
+    public readonly compatiblePlanets: PlanetType[]
 
     
     constructor(
@@ -63,5 +63,13 @@ export abstract class StarShip {
     }
 
 
-    public unloadCargo(): void {}
+    public unloadCargo(): void {
+        if (this.currentCargo <= 0) {
+            console.log('Não há nada para descarregar')
+            return
+        }
+
+        this.currentCargo = 0
+        console.log("Carga descarregada com sucesso")
+    }
 }

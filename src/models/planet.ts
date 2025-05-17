@@ -6,7 +6,7 @@ export abstract class Planet {
     
     public readonly name: string
     public readonly type: PlanetType
-    protected distancefromEarth: number
+    public readonly distancefromEarth: number
     protected restrictions: Restrictions[]
 
 
