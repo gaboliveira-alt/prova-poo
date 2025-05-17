@@ -36,7 +36,7 @@ export class GeneratorMission {
     }
 
 
-    public generateRandomCargos(): Cargo {
-
+    public generateRandomCargos(): Cargo { 
+        
     }
 }
