@@ -12,9 +12,10 @@ export class StarTrip {
     private fuelNeeded: number = 0
 
     constructor() {
-        this.starShip = GeneratorMission.generateRandomShips()
-        this.cargoShip = GeneratorMission.generateRandomCargos()
-        this.destinyPlanet = GeneratorMission.generateRandomPlanets()
+        const {starShip, cargo, planet} = GeneratorMission.generateCompatibleMissions()
+        this.starShip = starShip
+        this.cargoShip = cargo
+        this.destinyPlanet = planet
         this.missionStatus = 'NONE'
     }
 
