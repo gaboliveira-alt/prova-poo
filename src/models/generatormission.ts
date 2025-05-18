@@ -1,42 +1,82 @@
-import { PlanetsName, PlanetType, ShipTypes, starShipsNames } from "src/utils/types"
+import { PlanetsName, PlanetType, ShipTypes, starShipsNames } from "../utils/types"
 import { Planet } from "./planet"
 import { StarShip } from "./starship"
-import { randomChoice } from "src/utils/randomChoice"
-import { CreateStarShip } from "src/services/createStarShip"
-import { CreatePlanet } from "src/services/createPlanet"
+import { randomChoice,randomInt } from "../utils/randomChoice"
+import { CreateStarShip } from "../services/createStarShip"
+import { CreatePlanet } from "../services/createPlanet"
 import { Cargo } from "./cargo"
+import { CargoType,Requirements } from "../utils/types"
+
 
 export class GeneratorMission {
 
-    private static readonly shipTypes: ShipTypes[] = Object.keys(starShipsNames) as ShipTypes[]
-
-    private static readonly configPlanet: PlanetType[] = Object.keys(PlanetsName) as PlanetType[]
-
-
-    public generateRandomShips(): StarShip {
-        const randomType = randomChoice(GeneratorMission.shipTypes) as ShipTypes
-        const shipNames = starShipsNames[randomType]
-        const randomName = randomChoice(shipNames)
-
-        const factoryTypeShips = `create${randomType}` as keyof typeof CreateStarShip
-        const factoryCreateShips = CreateStarShip[factoryTypeShips] as (name: string) => StarShip
-        return factoryCreateShips(randomName)
+    static generateRandomShips(): StarShip {
+        const randomNameNumber = randomInt(1, 3)
+        let shipNames: string[]
+        let ship
+        switch (randomNameNumber) {
+            case 1:
+                shipNames = starShipsNames.StarDestroyer
+                ship = CreateStarShip.createStarDestroyer(randomChoice(shipNames))
+                break
+            case 2:
+                shipNames = starShipsNames.TieExplorer
+                ship = CreateStarShip.createTieExplorer(randomChoice(shipNames))
+                break
+            case 3:
+                shipNames = starShipsNames.GR75
+                ship = CreateStarShip.createGR75MediumTransport(randomChoice(shipNames))
+                break
+        }
+        
+        return ship!
     }
 
 
-    public generateRandomPlanets(): Planet {
-        const randomOptions = randomChoice(GeneratorMission.configPlanet) as PlanetType
-        const planetNames = PlanetsName[randomOptions]
-        const randomName = randomChoice(planetNames)
+    static generateRandomPlanets(): Planet {
+        const randomNameNumber = randomInt(1, 3)
+        let planetName: string[]
+        let planet
+        switch (randomNameNumber) {
+            case 1:
+                planetName = PlanetsName.AQUATIC
+                planet = CreatePlanet.createAquaticPlanet(randomChoice(planetName))
+                break
+            case 2:
+                planetName = PlanetsName.CORROSIVE
+                planet = CreatePlanet.createCorrosivePlanet(randomChoice(planetName))
+                break
+            case 3:
+                planetName = PlanetsName.ROCKY
+                planet = CreatePlanet.createRockyPlanet(randomChoice(planetName))
+                break
+        }
 
-        const factoryTypePlanets = `create${randomOptions}Planet` as keyof typeof CreatePlanet
-        const factoryCreatePlanets = CreatePlanet[factoryTypePlanets] as (name: string) => Planet
-
-        return factoryCreatePlanets(randomName)
+        return planet!
     }
 
 
-    public generateRandomCargos(): Cargo {
+    static generateRandomCargos(): Cargo {
+        const randomTypeNumber = randomInt(1, 3)
+        let typeCargo: CargoType
+        let cargoRequirement: Requirements
+        switch (randomTypeNumber) {
+            case 1:
+                typeCargo = 'INDUSTRIAL_EQUIPMENT'
+                cargoRequirement = 'ANTI_CORROSIVE'
+                break
+            case 2:
+                typeCargo = 'BIOTECH'
+                cargoRequirement = 'PRESSURE_SEALED'
+                break
+            case 3:
+                typeCargo = 'DROID_PARTS'
+                cargoRequirement = 'SHOCK_PROOF'
+                break
+        }
 
+        const weight = randomInt(100,1000)
+
+        return new Cargo(typeCargo!, weight, cargoRequirement!) 
     }
 }

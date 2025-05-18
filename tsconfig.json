@@ -4,7 +4,10 @@
       "module": "NodeNext",
       "moduleResolution": "nodenext",
       "resolveJsonModule": true,
-      "baseUrl": ".",
+      "baseUrl": "./src",
+      "paths": {
+        "src/*" : ["*"]
+      },
       "outDir": "./build",
       "sourceMap": true,
       "strict": true,

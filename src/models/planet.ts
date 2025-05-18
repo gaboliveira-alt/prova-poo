@@ -7,10 +7,10 @@ export abstract class Planet {
     public readonly name: string
     public readonly type: PlanetType
     public readonly distancefromEarth: number
-    protected restrictions: Restrictions[]
+    protected restrictions: Restrictions
 
 
-    constructor(name: string, type: PlanetType, distancefromEarth: number, restrictions: Restrictions[]) {
+    constructor(name: string, type: PlanetType, distancefromEarth: number, restrictions: Restrictions) {
         this.name = name
         this.type = type
         this.distancefromEarth = distancefromEarth

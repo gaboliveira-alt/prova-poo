@@ -9,7 +9,6 @@ class StarDestroyer extends StarShip {
     private static maxLoad: number = 5000
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 1.2
-    private static currentLoad: number = 0
     private static compatiblePlanet: PlanetType[] = ['CORROSIVE']
 
     
@@ -20,7 +19,7 @@ class StarDestroyer extends StarShip {
             StarDestroyer.maxLoad, 
             StarDestroyer.fuelLevel, 
             StarDestroyer.fuelEfficieny, 
-            StarDestroyer.currentLoad,
+            0,
             StarDestroyer.compatiblePlanet
         )
     }
@@ -51,7 +50,6 @@ class TieExplorer extends StarShip {
     private static maxLoad: number = 200
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 0.4
-    private static currentLoad: number = 0
     private static compatiblePlanet: PlanetType[] = ['AQUATIC']
 
 
@@ -62,7 +60,7 @@ class TieExplorer extends StarShip {
             TieExplorer.maxLoad,
             TieExplorer.fuelLevel,
             TieExplorer.fuelEfficieny,
-            TieExplorer.currentLoad,
+            0,
             TieExplorer.compatiblePlanet
         )
     }
@@ -93,7 +91,6 @@ class GR75MediumTransport extends StarShip {
     private static maxLoad: number = 3000
     private static fuelLevel: number = 100
     private static fuelEfficieny: number = 0.7
-    private static currentLoad: number = 0
     private static compatiblePlanet: PlanetType[] = ['ROCKY']
 
     constructor(name: string) {
@@ -103,7 +100,7 @@ class GR75MediumTransport extends StarShip {
             GR75MediumTransport.maxLoad,
             GR75MediumTransport.fuelLevel,
             GR75MediumTransport.fuelEfficieny,
-            GR75MediumTransport.currentLoad,
+            0,
             GR75MediumTransport.compatiblePlanet
         )
     }
