@@ -6,6 +6,7 @@ import { CreateStarShip } from "../services/createStarShip"
 import { CreatePlanet } from "../services/createPlanet"
 import { Cargo } from "./cargo"
 import { CargoType,Requirements } from "../utils/types"
+import { StarTrip } from "./startrip"
 
 
 export class GeneratorMission {
@@ -62,7 +63,7 @@ export class GeneratorMission {
         let cargoRequirement: Requirements
         switch (randomTypeNumber) {
             case 1:
-                typeCargo = 'INDUSTRIAL_EQUIPMENT'
+                typeCargo = 'INDUSTRIAL_EQUIPAMENT'
                 cargoRequirement = 'ANTI_CORROSIVE'
                 break
             case 2:
@@ -78,5 +79,72 @@ export class GeneratorMission {
         const weight = randomInt(100,1000)
 
         return new Cargo(typeCargo!, weight, cargoRequirement!) 
+    }
+
+
+    static generateCompatibleMissions(): {starShip: StarShip, cargo: Cargo, planet: Planet} {
+       const allShips: StarShip[] = []
+       for (let i = 0; i < 5; i++) {
+        allShips.push(this.generateRandomShips())
+       }
+
+
+       const allCargos: Cargo[] = []
+       for (let i = 0; i < 5; i++) {
+        allCargos.push(this.generateRandomCargos())
+       }
+
+
+       const allPlanets: Planet[] = []
+       for (let i = 0; i < 5; i++) {
+        allPlanets.push(this.generateRandomPlanets())
+       }
+
+
+       const communCargoTypes: string[] = ['BIOTECH', 'DROID_PARTS', 'INDUSTRIAL_EQUIPAMENT']
+       const filteredCargos: Cargo[] = []
+       for (const cargo of allCargos) {
+        if (communCargoTypes.includes(cargo.type)) {
+            filteredCargos.push(cargo)
+        }
+       }
+
+
+       const chosenCargo = randomChoice(filteredCargos)
+
+
+       const filteredShips: StarShip[] = []
+       for (const ship of allShips) {
+        if (ship.canCarry(chosenCargo)) {
+            filteredShips.push(ship)
+        }
+       }
+
+
+       if (Math.random() < 0.20) {
+        filteredShips.push(randomChoice(allShips))
+       }
+
+
+       const chosenShip = randomChoice(filteredShips)
+
+
+       const filteredPlanets: Planet[] = []
+       for (const planet of allPlanets) {
+        if (planet.acceptsCargo(chosenCargo) && chosenShip.compatiblePlanets.includes(planet.type)) {
+            filteredPlanets.push(planet)
+        }
+       }
+
+
+       if (Math.random() < 0.20) {
+            filteredPlanets.push(randomChoice(allPlanets))
+       }
+
+
+       const chosenPlanet = randomChoice(filteredPlanets)
+
+
+       return {starShip: chosenShip, cargo: chosenCargo, planet: chosenPlanet}
     }
 }

@@ -1,5 +1,5 @@
 
-export type CargoType = 'INDUSTRIAL_EQUIPMENT' | 'BIOTECH' | 'DROID_PARTS' 
+export type CargoType = 'INDUSTRIAL_EQUIPAMENT' | 'BIOTECH' | 'DROID_PARTS' 
 
 export type PlanetType = keyof PlanetsName
 
