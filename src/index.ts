@@ -1,6 +1,6 @@
-import { MissionTravel } from "./models/missiontravel"
+import { StarTrip } from "./models/startrip"
 
-const mission = new MissionTravel()
+const mission = new StarTrip()
 mission.startMission()
 mission.executeMission()
 console.log(mission.generateReport())
