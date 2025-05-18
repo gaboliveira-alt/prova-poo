@@ -83,68 +83,69 @@ export class GeneratorMission {
 
 
     static generateCompatibleMissions(): {starShip: StarShip, cargo: Cargo, planet: Planet} {
-       const allShips: StarShip[] = []
-       for (let i = 0; i < 5; i++) {
-        allShips.push(this.generateRandomShips())
-       }
-
-
-       const allCargos: Cargo[] = []
-       for (let i = 0; i < 5; i++) {
-        allCargos.push(this.generateRandomCargos())
-       }
-
-
-       const allPlanets: Planet[] = []
-       for (let i = 0; i < 5; i++) {
-        allPlanets.push(this.generateRandomPlanets())
-       }
-
-
-       const communCargoTypes: string[] = ['BIOTECH', 'DROID_PARTS', 'INDUSTRIAL_EQUIPAMENT']
-       const filteredCargos: Cargo[] = []
-       for (const cargo of allCargos) {
-        if (communCargoTypes.includes(cargo.type)) {
-            filteredCargos.push(cargo)
+        const allShips: StarShip[] = []
+        for (let i = 0; i < 5; i++) {
+            allShips.push(this.generateRandomShips())
         }
-       }
 
-
-       const chosenCargo = randomChoice(filteredCargos) as Cargo
-
-
-       const filteredShips: StarShip[] = []
-       for (const ship of allShips) {
-        if (ship.canCarry(chosenCargo)) {
-            filteredShips.push(ship)
+        const allCargos: Cargo[] = []
+        for (let i = 0; i < 5; i++) {
+            allCargos.push(this.generateRandomCargos())
         }
-       }
 
-
-       if (Math.random() < 0.20) {
-        filteredShips.push(randomChoice(allShips))
-       }
-
-
-       const chosenShip = randomChoice(filteredShips) as StarShip
-
-
-       const filteredPlanets: Planet[] = []
-       for (const planet of allPlanets) {
-        if (planet.acceptsCargo(chosenCargo) && chosenShip.compatiblePlanets.includes(planet.type)) {
-            filteredPlanets.push(planet)
+        const allPlanets: Planet[] = []
+        for (let i = 0; i < 5; i++) {
+            allPlanets.push(this.generateRandomPlanets())
         }
-       }
 
 
-       if (Math.random() < 0.20) {
-            filteredPlanets.push(randomChoice(allPlanets))
-       }
+        const communCargoTypes: string[] = ['BIOTECH', 'DROID_PARTS', 'INDUSTRIAL_EQUIPAMENT']
+        const filteredCargos: Cargo[] = []
+        for (const cargo of allCargos) {
+            if (communCargoTypes.includes(cargo.type)) {
+                filteredCargos.push(cargo)
+            }
+        }
 
+        if(filteredCargos.length === 0){
+            throw new Error("Nenhuma carga válida encontrada")
+        }
 
-       const chosenPlanet = randomChoice(filteredPlanets) as Planet
+        const chosenCargo = randomChoice(filteredCargos)
+        console.log("chosenCargo:", chosenCargo)
 
+        const filteredShips: StarShip[] = []
+        for (const ship of allShips) {
+            if (ship.canCarry(chosenCargo)) {
+                filteredShips.push(ship)
+            }
+        }
 
-       return {starShip: chosenShip, cargo: chosenCargo, planet: chosenPlanet}
+        if (filteredShips.length === 0 || Math.random() < 0.20) {
+            filteredShips.push(randomChoice(allShips))
+        }
+
+        const chosenShip = randomChoice(filteredShips)
+        console.log("chosenShip:", chosenShip)
+
+        if(!chosenShip || !chosenShip.compatiblePlanets) {
+            throw new Error("Nave escolhida inválida ou sem compatiblePlanets")
+        }
+
+        const filteredPlanets: Planet[] = []
+        for (const planet of allPlanets) {
+            if (planet.acceptsCargo(chosenCargo) && chosenShip.compatiblePlanets.includes(planet.type)) {
+                filteredPlanets.push(planet)
+            }
+        }
+
+        if (filteredPlanets.length === 0 || Math.random() < 0.20) {
+                filteredPlanets.push(randomChoice(allPlanets))
+        }
+
+        const chosenPlanet = randomChoice(filteredPlanets)
+        console.log("chosenPlanet:", chosenPlanet)
+
+        return {starShip: chosenShip, cargo: chosenCargo, planet: chosenPlanet}
     }
 }

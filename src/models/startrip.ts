@@ -13,7 +13,6 @@ export class StarTrip {
 
     constructor() {
         const {starShip, cargo, planet} = GeneratorMission.generateCompatibleMissions()
-        console.log('Gerado:', { starShip, cargo, planet })
         this.starShip = starShip
         this.cargoShip = cargo
         this.destinyPlanet = planet
@@ -59,7 +58,7 @@ export class StarTrip {
             return
         }
 
-        const conclusionTravel = this.starShip.calculateFuelConsumption(this.fuelNeeded)
+        const conclusionTravel = this.starShip.travelToDestiny(this.fuelNeeded)
         
         
         if (conclusionTravel) {
