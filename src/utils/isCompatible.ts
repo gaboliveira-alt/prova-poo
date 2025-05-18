@@ -15,14 +15,10 @@ function getRequirementsforRestrictions(restriction: Restrictions): Requirements
 }
 
 
-export function checkCargoCompatible(planetRestrictions: Restrictions[], Cargorequirements: Requirements[]): boolean {
-    for (const restriction of planetRestrictions) {
-        const getRequirements = getRequirementsforRestrictions(restriction)
-
-        if (!Cargorequirements.includes(getRequirements)) {
-            return false
+export function checkCargoCompatible(planetRestrictions: Restrictions, Cargorequirements: Requirements): boolean {
+        if (Cargorequirements == getRequirementsforRestrictions(planetRestrictions)) {
+            return true
         }
-    }
-
-    return true
+    
+     return false
 }

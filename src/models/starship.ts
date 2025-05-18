@@ -54,9 +54,9 @@ export abstract class StarShip {
 
 
     public loadCargo(cargoWeight: Cargo): boolean {
-       if (this.canCarry(cargoWeight)) {
-        this.currentCargo += cargoWeight.weight
-        return true
+        if (this.canCarry(cargoWeight)) {
+            this.currentCargo += cargoWeight.weight
+            return true
        }
 
        return false
@@ -64,11 +64,12 @@ export abstract class StarShip {
 
 
     public unloadCargo(): void {
-        if (this.currentCargo <= 0) {
+        if (this.currentCargo === 0) {
             console.log('Não há nada para descarregar')
-            return
         }
-
-        this.currentCargo = 0
+        else {
+            console.log(`Descarregando ${this.currentCargo}`)
+            this.currentCargo = 0
+        }
     }
 }

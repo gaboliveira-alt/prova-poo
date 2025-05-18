@@ -1,17 +1,18 @@
-import { CargoOptions, CargoType, PlanetsName, PlanetType, Requirements, Restrictions, ShipTypes, starShipsNames } from "src/utils/types"
+import { PlanetsName, PlanetType, ShipTypes, starShipsNames } from "src/utils/types"
 import { Planet } from "./planet"
 import { StarShip } from "./starship"
-import { randomChoice } from "src/utils/randomChoice"
-import { CreateStarShip } from "src/services/createStarShip"
-import { CreatePlanet } from "src/services/createPlanet"
+import { randomChoice,randomInt } from "../utils/randomChoice"
+import { CreateStarShip } from "../services/createStarShip"
+import { CreatePlanet } from "../services/createPlanet"
 import { Cargo } from "./cargo"
+import { CargoType,Requirements } from "../utils/types"
+
 
 export class GeneratorMission {
 
     private static readonly shipTypes: ShipTypes[] = Object.keys(starShipsNames) as ShipTypes[]
 
     private static readonly configPlanet: PlanetType[] = Object.keys(PlanetsName) as PlanetType[]
-
 
 
     public generateRandomShips(): StarShip {
@@ -21,7 +22,6 @@ export class GeneratorMission {
 
         const factoryTypeShips = `create${randomType}` as keyof typeof CreateStarShip
         const factoryCreateShips = CreateStarShip[factoryTypeShips] as (name: string) => StarShip
-
         return factoryCreateShips(randomName)
     }
 
@@ -38,7 +38,7 @@ export class GeneratorMission {
     }
 
 
-    public generateRandomCargos(planetRestrictions: Restrictions[]): Cargo { 
-        return new Cargo()
+    public generateRandomCargos(): Cargo {
+
     }
 }
