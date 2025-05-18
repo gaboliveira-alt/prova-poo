@@ -1,5 +1,4 @@
 import { Planet } from "./planet";
-import { PlanetType } from "../utils/types";
 import { Restrictions } from "../utils/types";
 
 class CorrosivePlanet extends Planet {
