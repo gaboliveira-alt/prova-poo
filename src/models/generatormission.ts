@@ -110,7 +110,7 @@ export class GeneratorMission {
        }
 
 
-       const chosenCargo = randomChoice(filteredCargos)
+       const chosenCargo = randomChoice(filteredCargos) as Cargo
 
 
        const filteredShips: StarShip[] = []
@@ -126,7 +126,7 @@ export class GeneratorMission {
        }
 
 
-       const chosenShip = randomChoice(filteredShips)
+       const chosenShip = randomChoice(filteredShips) as StarShip
 
 
        const filteredPlanets: Planet[] = []
@@ -142,7 +142,7 @@ export class GeneratorMission {
        }
 
 
-       const chosenPlanet = randomChoice(filteredPlanets)
+       const chosenPlanet = randomChoice(filteredPlanets) as Planet
 
 
        return {starShip: chosenShip, cargo: chosenCargo, planet: chosenPlanet}
