@@ -80,3 +80,5 @@ export class GeneratorMission {
         return new Cargo(typeCargo!, weight, cargoRequirement!) 
     }
 }
+
+//opaaaaaaaaaaaaaaaaaa//

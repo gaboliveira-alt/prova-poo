@@ -1,6 +1,6 @@
 import { CorrosivePlanet, RockyPlanet, AquaticPlanet } from "../models/planets";
 import { Restrictions } from "../utils/types";
-import { randomInt } from "../utils/randomChoice";
+import { randomChoice, randomInt } from "../utils/randomChoice";
 
 
 function choiceRestriction(id: number): Restrictions {
