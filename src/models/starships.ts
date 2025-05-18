@@ -28,7 +28,7 @@ class StarDestroyer extends StarShip {
     public canCarry(cargo: Cargo): boolean {
         const destroyerMaxCargo = this.maxCargo
 
-        if (cargo.type === 'INDUSTRIAL_EQUIPMENT') {
+        if (cargo.type === 'INDUSTRIAL_EQUIPAMENT') {
             if (cargo.weight <= destroyerMaxCargo) {
                 return true
             }
