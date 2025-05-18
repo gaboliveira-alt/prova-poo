@@ -18,6 +18,7 @@ export class StarTrip {
         this.missionStatus = 'NONE'
     }
 
+
     private hasFuelToTrip(planetDistance: number): boolean {
         return this.starShip.calculateFuelConsumption(planetDistance) <= this.starShip.fuelLevel
     }
@@ -54,9 +55,11 @@ export class StarTrip {
             console.log("MISSÃO NÃO ESTÁ PRONTA PARA EXECUÇÃO.\n")
             return
         }
+
+        const conclusionTravel = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
         
         
-        if () {
+        if (conclusionTravel) {
             this.starShip.travelToDestiny(this.fuelNeeded)
             this.starShip.unloadCargo()
             this.missionStatus = 'DONE'
