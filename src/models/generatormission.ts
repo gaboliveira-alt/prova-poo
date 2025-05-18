@@ -1,4 +1,4 @@
-import { PlanetsName, starShipsNames } from "src/utils/types"
+import { PlanetsName, starShipsNames } from "../utils/types"
 import { Planet } from "./planet"
 import { StarShip } from "./starship"
 import { randomChoice,randomInt } from "../utils/randomChoice"
