@@ -18,11 +18,7 @@ export class StarTrip {
         this.missionStatus = 'NONE'
     }
 
-    private hasFuelToTrip(planetDistance: number): boolean {
-        return this.starShip.calculateFuelConsumption(planetDistance) <= this.starShip.fuelLevel
-    }
-    
-    
+
     public startMission(): void {
         if (!this.starShip.loadCargo(this.cargoShip)) {
             this.missionStatus = 'FAILED'
@@ -40,7 +36,8 @@ export class StarTrip {
             return
         }
 
-        if (this.hasFuelToTrip(this.destinyPlanet.distancefromEarth)) {
+        this.fuelNeeded = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
+        if (this.starShip.fuelLevel < this.fuelNeeded) {
             this.missionStatus = 'FAILED'
             return
         }
@@ -50,13 +47,8 @@ export class StarTrip {
 
 
     public executeMission(): void {
-        if (this.missionStatus !== 'SUCCESS') {
-            console.log("MISSÃO NÃO ESTÁ PRONTA PARA EXECUÇÃO.\n")
-            return
-        }
         
-        
-        if () {
+        if (this.fuelNeeded <= this.starShip.fuelLevel) {
             this.starShip.travelToDestiny(this.fuelNeeded)
             this.starShip.unloadCargo()
             this.missionStatus = 'DONE'
@@ -68,7 +60,7 @@ export class StarTrip {
 
 
     public generateReport(): string {
-        const lastmissionStatus: string = this.missionStatus
+        const lastmissionStatus: string = this.missionStatus[this.missionStatus.length - 1]
         
         const headMessage: string = `\n RELATORIO DA MISSÃO \n`
         let bodyMessage: string = headMessage + `- Nave: ${this.starShip.name}\n` + 

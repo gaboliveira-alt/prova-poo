@@ -8,67 +8,59 @@ export class StarTrip {
     public readonly starShip: StarShip
     public readonly cargoShip: Cargo
     public readonly destinyPlanet: Planet
-    private missionStatus: string
+    public readonly missionStatus: string[]
     private fuelNeeded: number = 0
 
     constructor() {
         this.starShip = GeneratorMission.generateRandomShips()
         this.cargoShip = GeneratorMission.generateRandomCargos()
         this.destinyPlanet = GeneratorMission.generateRandomPlanets()
-        this.missionStatus = 'NONE'
+        this.missionStatus = []
     }
 
-    private hasFuelToTrip(planetDistance: number): boolean {
-        return this.starShip.calculateFuelConsumption(planetDistance) <= this.starShip.fuelLevel
-    }
-    
-    
+
     public startMission(): void {
         if (!this.starShip.loadCargo(this.cargoShip)) {
-            this.missionStatus = 'FAILED'
+            this.missionStatus.push('FAILED')
             return
         }
 
 
         if (!this.starShip.compatiblePlanets.includes(this.destinyPlanet.type)) {
-            this.missionStatus = 'FAILED'
+            this.missionStatus.push('FAILED')
             return
         }
 
         if (!this.destinyPlanet.acceptsCargo(this.cargoShip)) {
-            this.missionStatus = 'FAILED'
+            this.missionStatus.push('FAILED')
             return
         }
 
-        if (this.hasFuelToTrip(this.destinyPlanet.distancefromEarth)) {
-            this.missionStatus = 'FAILED'
+        this.fuelNeeded = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
+        if (this.starShip.fuelLevel < this.fuelNeeded) {
+            this.missionStatus.push('FAILED')
             return
         }
 
-        this.missionStatus = 'SUCCESS'
+        this.missionStatus.push('SUCCESS')
     }
 
 
     public executeMission(): void {
-        if (this.missionStatus !== 'SUCCESS') {
-            console.log("MISSÃO NÃO ESTÁ PRONTA PARA EXECUÇÃO.\n")
-            return
-        }
         
-        
-        if () {
+        if (this.fuelNeeded < this.starShip.fuelLevel) {
             this.starShip.travelToDestiny(this.fuelNeeded)
             this.starShip.unloadCargo()
-            this.missionStatus = 'DONE'
+            this.missionStatus.push('DONE')
         }
         else {
-            this.missionStatus = 'FAILED'
+            this.missionStatus.push('FAILED')
         }
     }
 
 
     public generateReport(): string {
-        const lastmissionStatus: string = this.missionStatus
+        const lastmissionStatus: string = this.missionStatus[this.missionStatus.length - 1]
         
         const headMessage: string = `\n RELATORIO DA MISSÃO \n`
         let bodyMessage: string = headMessage + `- Nave: ${this.starShip.name}\n` + 
