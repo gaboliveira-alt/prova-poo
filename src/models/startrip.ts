@@ -41,11 +41,12 @@ export class StarTrip {
             return
         }
 
-        if (this.hasFuelToTrip(this.destinyPlanet.distancefromEarth)) {
+        if (!this.hasFuelToTrip(this.destinyPlanet.distancefromEarth)) {
             this.missionStatus = 'FAILED'
             return
         }
 
+        this.fuelNeeded = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
         this.missionStatus = 'SUCCESS'
     }
 
@@ -56,11 +57,10 @@ export class StarTrip {
             return
         }
 
-        const conclusionTravel = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
+        const conclusionTravel = this.starShip.calculateFuelConsumption(this.fuelNeeded)
         
         
         if (conclusionTravel) {
-            this.starShip.travelToDestiny(this.fuelNeeded)
             this.starShip.unloadCargo()
             this.missionStatus = 'DONE'
         }
@@ -75,9 +75,9 @@ export class StarTrip {
         
         const headMessage: string = `\n RELATORIO DA MISSÃO \n`
         let bodyMessage: string = headMessage + `- Nave: ${this.starShip.name}\n` + 
-                                    `- Carga: ${this.cargoShip.type}\n` + 
-                                    `- Planeta: ${this.destinyPlanet.name} ${this.destinyPlanet.type}\n` + 
-                                    `- Combustivel usado: ${this.fuelNeeded.toFixed(1)}`
+                                    `- Carga: ${this.cargoShip.type}\n Requirementos: ${this.cargoShip.requirements}\n` + 
+                                    `- Planeta: ${this.destinyPlanet.name}\n Tipo: ${this.destinyPlanet.type}\n` + 
+                                    `- Combustivel usado: ${this.fuelNeeded.toFixed(1)}\n`
         
         
         switch(lastmissionStatus) {

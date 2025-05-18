@@ -38,7 +38,7 @@ export abstract class StarShip {
     public travelToDestiny(planetDistance: number): boolean {
         const fuelLoss = this.calculateFuelConsumption(planetDistance)
 
-        if (fuelLoss <= this.fuelLevel) {
+        if (fuelLoss < this.fuelLevel) {
             this.fuelLevel -= fuelLoss
             return true
         }
@@ -65,10 +65,9 @@ export abstract class StarShip {
 
     public unloadCargo(): void {
         if (this.currentCargo === 0) {
-            console.log('Não há nada para descarregar')
+            return
         }
         else {
-            console.log(`Descarregando ${this.currentCargo}`)
             this.currentCargo = 0
         }
     }
