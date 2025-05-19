@@ -26,6 +26,8 @@ export class StarTrip {
     
     
     public startMission(): void {
+        this.starShip.resetCargo()
+        
         if (!this.starShip.loadCargo(this.cargoShip)) {
             this.missionStatus = 'FAILED'
             return

@@ -39,7 +39,9 @@ class StarDestroyer extends StarShip {
 
 
     public calculateFuelConsumption(planetDistance: number): number {
-        return planetDistance * this.speed * (this.currentCargo / this.maxCargo)
+        const baseConsumptionFactor = 0.5
+        const cargoFactor = this.currentCargo / this.maxCargo
+        return planetDistance * this.speed * (baseConsumptionFactor + cargoFactor)
     }
 }
 
@@ -80,7 +82,8 @@ class TieExplorer extends StarShip {
 
 
     public calculateFuelConsumption(planetDistance: number): number {
-        return planetDistance * this.speed
+        const cargoFactor = 0.1 * (this.currentCargo / this.maxCargo)
+        return planetDistance * this.speed * (1 + cargoFactor)
     }
 }
 

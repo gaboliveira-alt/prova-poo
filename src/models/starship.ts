@@ -47,9 +47,8 @@ export abstract class StarShip {
         }
     }
 
-
-    public refuel(fuelAmmount: number): void {
-        this.fuelLevel = Math.min(this.fuelLevel + fuelAmmount, 100)
+    public resetCargo(): void {
+        this.currentCargo = 0
     }
 
 
