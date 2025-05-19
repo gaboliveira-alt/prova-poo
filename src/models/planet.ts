@@ -21,9 +21,4 @@ export abstract class Planet {
     public acceptsCargo(cargoShip: Cargo): boolean {
         return checkCargoCompatible(this.restrictions, cargoShip.requirements)
     }
-
-    
-    public showPlanet(): string {
-        return `${this.name} | ${this.type} | ${this.restrictions}`
-    }
 }

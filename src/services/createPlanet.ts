@@ -23,7 +23,7 @@ function choiceRestriction(id: number): Restrictions {
 export class CreatePlanet {
 
     static createCorrosivePlanet(name: string) {
-        const distance: number = randomInt(100, 10000)
+        const distance: number = randomInt(10, 100)
 
         const corrosivePlanet = new CorrosivePlanet(name, distance, 'ACID_RESISTANT')
         return corrosivePlanet
@@ -31,7 +31,7 @@ export class CreatePlanet {
 
 
     static createRockyPlanet(name: string) {
-        const distance: number = randomInt(100, 10000)
+        const distance: number = randomInt(10, 100)
     
         const rockyPlanet = new RockyPlanet(name, distance, 'NO_LIQUIDS');
         return rockyPlanet
@@ -39,7 +39,7 @@ export class CreatePlanet {
 
     
     static createAquaticPlanet(name: string) {
-        const distance: number = randomInt(100, 10000)
+        const distance: number = randomInt(10, 100)
 
         const aquaticPlanet = new AquaticPlanet(name, distance, 'HUMIDITY_SENSITIV');
         return aquaticPlanet;

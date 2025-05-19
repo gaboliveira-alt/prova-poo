@@ -29,7 +29,7 @@ class StarDestroyer extends StarShip {
         const destroyerMaxCargo = this.maxCargo
 
         if (cargo.type === 'INDUSTRIAL_EQUIPAMENT') {
-            if (cargo.weight <= destroyerMaxCargo) {
+            if ((this.currentCargo + cargo.weight) <= destroyerMaxCargo) {
                 return true
             }
         }
@@ -72,7 +72,7 @@ class TieExplorer extends StarShip {
         const tieExplorermaxCargo = this.maxCargo
 
         if (cargo.type === 'BIOTECH') {
-            if (cargo.weight <= tieExplorermaxCargo) {
+            if ((this.currentCargo + cargo.weight) <= tieExplorermaxCargo) {
                 return true
             }
         }
@@ -113,7 +113,7 @@ class GR75MediumTransport extends StarShip {
         const gr75Maxcargo = this.maxCargo
 
         if (cargo.type === 'DROID_PARTS') {
-            if (cargo.weight <= gr75Maxcargo) {
+            if ((this.currentCargo + cargo.weight) <= gr75Maxcargo) {
                 return true
             }
         }

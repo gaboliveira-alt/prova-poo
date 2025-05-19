@@ -7,7 +7,7 @@ export abstract class StarShip {
     protected maxCargo: number
     public fuelLevel: number
     protected fuelEfficiency: number
-    protected currentCargo: number
+    public currentCargo: number
     public readonly compatiblePlanets: PlanetType[]
 
     
