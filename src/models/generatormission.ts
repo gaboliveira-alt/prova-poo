@@ -6,7 +6,7 @@ import { CreateStarShip } from "../services/createStarShip"
 import { CreatePlanet } from "../services/createPlanet"
 import { Cargo } from "./cargo"
 import { CargoType,Requirements } from "../utils/types"
-import { StarTrip } from "./startrip"
+import { StarTrip } from "../services/startrip"
 
 
 export class GeneratorMission {

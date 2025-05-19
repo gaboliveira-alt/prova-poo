@@ -1,7 +1,7 @@
-import { Cargo } from "./cargo";
-import { Planet } from "./planet";
-import { StarShip } from "./starship";
-import { GeneratorMission } from "./generatormission";
+import { Cargo } from "../models/cargo";
+import { Planet } from "../models/planet";
+import { StarShip } from "../models/starship";
+import { GeneratorMission } from "../models/generatormission";
 
 export class StarTrip {
 
@@ -57,7 +57,6 @@ export class StarTrip {
 
     public executeMission(): void {
         if (this.missionStatus !== 'SUCCESS') {
-            console.log("MISSÃO NÃO ESTÁ PRONTA PARA EXECUÇÃO.\n")
             return
         }
 

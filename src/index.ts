@@ -1,4 +1,4 @@
-import { StarTrip } from "./models/startrip"
+import { StarTrip } from "./services/startrip"
 
 const mission = new StarTrip()
 mission.startMission()
