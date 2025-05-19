@@ -112,7 +112,6 @@ export class GeneratorMission {
         }
 
         const chosenCargo = randomChoice(filteredCargos)
-        console.log("chosenCargo:", chosenCargo)
 
         const filteredShips: StarShip[] = []
         for (const ship of allShips) {
@@ -126,7 +125,6 @@ export class GeneratorMission {
         }
 
         const chosenShip = randomChoice(filteredShips)
-        console.log("chosenShip:", chosenShip)
 
         if(!chosenShip || !chosenShip.compatiblePlanets) {
             throw new Error("Nave escolhida inválida ou sem compatiblePlanets")
@@ -140,11 +138,10 @@ export class GeneratorMission {
         }
 
         if (filteredPlanets.length === 0 || Math.random() < 0.20) {
-                filteredPlanets.push(randomChoice(allPlanets))
+            filteredPlanets.push(randomChoice(allPlanets))
         }
 
         const chosenPlanet = randomChoice(filteredPlanets)
-        console.log("chosenPlanet:", chosenPlanet)
 
         return {starShip: chosenShip, cargo: chosenCargo, planet: chosenPlanet}
     }

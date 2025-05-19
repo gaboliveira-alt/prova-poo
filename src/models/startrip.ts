@@ -42,12 +42,13 @@ export class StarTrip {
             return
         }
 
+        this.fuelNeeded = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
+        
         if (!this.hasFuelToTrip(this.destinyPlanet.distancefromEarth)) {
             this.missionStatus = 'FAILED'
             return
         }
 
-        this.fuelNeeded = this.starShip.calculateFuelConsumption(this.destinyPlanet.distancefromEarth)
         this.missionStatus = 'SUCCESS'
     }
 
@@ -58,7 +59,7 @@ export class StarTrip {
             return
         }
 
-        const conclusionTravel = this.starShip.travelToDestiny(this.fuelNeeded)
+        const conclusionTravel = this.starShip.travelToDestiny(this.destinyPlanet.distancefromEarth)
         
         
         if (conclusionTravel) {
