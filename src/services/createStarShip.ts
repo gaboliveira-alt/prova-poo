@@ -1,5 +1,6 @@
 import { StarDestroyer, TieExplorer, GR75MediumTransport } from "../models/starships";
 
+
 export class CreateStarShip {
     static createStarDestroyer(starShipName: string) {
         const starShip = new StarDestroyer(starShipName);
